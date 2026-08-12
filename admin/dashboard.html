@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Vixton Labs Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="dash">
+  <aside class="sidebar">
+    <div>
+      <div class="logo"><span class="dot"></span>VIXTON LABS</div>
+      <nav>
+        <a data-view="services" class="active">Services</a>
+        <a data-view="works">Our Work</a>
+        <a data-view="messages">Messages</a>
+      </nav>
+    </div>
+    <button id="logout-btn" class="btn btn-small" style="width:100%;">Sign out</button>
+  </aside>
+
+  <main class="main">
+
+    <!-- ===== SERVICES ===== -->
+    <section class="view active" id="view-services">
+      <div class="main-head">
+        <div>
+          <h1>Services</h1>
+          <p>These show up on the Home and "What We Do" pages, in this order.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 id="services-form-title">Add a service</h3>
+        <form id="services-form">
+          <input type="hidden" id="service-id">
+          <div class="field"><label>Title</label><input type="text" id="service-title" required placeholder="e.g. AI Chatbots"></div>
+          <div class="field"><label>Description</label><textarea id="service-description" required placeholder="Short description shown on the card"></textarea></div>
+          <div class="field"><label>Tags (comma separated)</label><input type="text" id="service-tags" placeholder="AI, NLP, Support"></div>
+          <div class="field"><label>Sort order (lower shows first)</label><input type="number" id="service-sort" value="0"></div>
+          <button type="submit" class="btn btn-primary" style="width:auto;" id="services-submit-btn">Add service</button>
+          <button type="button" class="btn btn-small" id="services-cancel-btn" style="display:none; margin-left:10px;">Cancel edit</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h3>All services</h3>
+        <table id="services-table">
+          <thead><tr><th>Title</th><th>Order</th><th>Actions</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="empty-state" id="services-empty" style="display:none;">No services yet — add your first one above.</div>
+      </div>
+    </section>
+
+    <!-- ===== WORKS ===== -->
+    <section class="view" id="view-works">
+      <div class="main-head">
+        <div>
+          <h1>Our Work</h1>
+          <p>Projects shown on the Home and "Our Work" pages.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 id="works-form-title">Add a project</h3>
+        <form id="works-form">
+          <input type="hidden" id="work-id">
+          <div class="field"><label>Title</label><input type="text" id="work-title" required placeholder="e.g. Order Automation for a Local Cafe"></div>
+          <div class="field"><label>Category</label><input type="text" id="work-category" placeholder="Automation / Chatbot / Website / App"></div>
+          <div class="field"><label>Description</label><textarea id="work-description" required placeholder="What was built and what it does"></textarea></div>
+          <div class="field"><label>Image URL (optional)</label><input type="text" id="work-image" placeholder="https://..."></div>
+          <div class="field"><label>Sort order (lower shows first)</label><input type="number" id="work-sort" value="0"></div>
+          <button type="submit" class="btn btn-primary" style="width:auto;" id="works-submit-btn">Add project</button>
+          <button type="button" class="btn btn-small" id="works-cancel-btn" style="display:none; margin-left:10px;">Cancel edit</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h3>All projects</h3>
+        <table id="works-table">
+          <thead><tr><th>Title</th><th>Category</th><th>Order</th><th>Actions</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="empty-state" id="works-empty" style="display:none;">No projects yet — add your first one above.</div>
+      </div>
+    </section>
+
+    <!-- ===== MESSAGES ===== -->
+    <section class="view" id="view-messages">
+      <div class="main-head">
+        <div>
+          <h1>Messages</h1>
+          <p>Submissions from the Contact page.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <table id="messages-table">
+          <thead><tr><th>Name</th><th>Email</th><th>Needs</th><th>Message</th><th>Received</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="empty-state" id="messages-empty" style="display:none;">No messages yet.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+:root{
+  --bg: #0A0E14;
+  --bg-raised: #10161F;
+  --bg-panel: #131B26;
+  --line: #223041;
+  --text: #EAF0F5;
+  --text-dim: #8FA0B3;
+  --text-faint: #56667A;
+  --cyan: #3DE1FF;
+  --violet: #8B6BFF;
+  --danger: #FF6B6B;
+  --ok: #4ADE80;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius: 12px;
+}
+*{ box-sizing:border-box; }
+body{
+  margin:0; background: var(--bg); color: var(--text);
+  font-family: var(--font-body); min-height:100vh;
+}
+h1,h2,h3{ font-family: var(--font-display); margin:0; }
+a{ color:inherit; }
+
+/* ---- login screen ---- */
+.login-screen{
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  padding: 24px;
+}
+.login-card{
+  width: 100%; max-width: 380px;
+  background: var(--bg-panel); border:1px solid var(--line); border-radius: var(--radius);
+  padding: 40px 32px;
+}
+.login-card .logo{
+  font-family: var(--font-display); font-weight:600; font-size:20px;
+  display:flex; align-items:center; gap:10px; margin-bottom: 6px;
+}
+.login-card .dot{ width:8px; height:8px; border-radius:50%; background:var(--cyan); box-shadow:0 0 12px 2px var(--cyan); }
+.login-card p.sub{ color: var(--text-dim); font-size:13px; margin-bottom: 28px; }
+
+/* ---- shared form fields ---- */
+.field{ margin-bottom: 18px; }
+.field label{ display:block; font-family: var(--font-mono); font-size:12px; color:var(--text-dim); margin-bottom:7px; }
+.field input, .field textarea, .field select{
+  width:100%; background: var(--bg-raised); border:1px solid var(--line); border-radius:8px;
+  padding: 11px 13px; color: var(--text); font-family: var(--font-body); font-size:14px;
+}
+.field input:focus, .field textarea:focus, .field select:focus{ outline:none; border-color: var(--cyan); }
+.field textarea{ min-height: 90px; resize: vertical; }
+.error-msg{ color: var(--danger); font-size: 13px; margin-top: 12px; min-height: 18px; }
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family: var(--font-mono); font-size:13px; padding: 12px 20px;
+  border-radius: 100px; cursor:pointer; border:1px solid var(--line);
+  background: transparent; color: var(--text); width:100%;
+}
+.btn-primary{ background: linear-gradient(135deg, var(--cyan), var(--violet)); color:#05080D; border:none; font-weight:600; }
+.btn-small{ width:auto; padding: 8px 14px; font-size:12px; }
+.btn-danger{ border-color: var(--danger); color: var(--danger); }
+
+/* ---- dashboard shell ---- */
+.dash{ display:flex; min-height:100vh; }
+.sidebar{
+  width: 220px; flex-shrink:0; background: var(--bg-panel); border-right:1px solid var(--line);
+  padding: 26px 20px; display:flex; flex-direction:column; justify-content:space-between;
+}
+.sidebar .logo{ font-family: var(--font-display); font-weight:600; font-size:17px; display:flex; align-items:center; gap:9px; margin-bottom: 40px; }
+.sidebar .dot{ width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 10px 2px var(--cyan); }
+.sidebar nav a{
+  display:flex; align-items:center; gap:10px;
+  padding: 11px 12px; border-radius:8px; font-size:14px; color: var(--text-dim);
+  margin-bottom: 4px; cursor:pointer;
+}
+.sidebar nav a:hover{ background: var(--bg-raised); color: var(--text); }
+.sidebar nav a.active{ background: var(--bg-raised); color: var(--cyan); }
+.main{ flex:1; padding: 40px 48px; max-width: 980px; }
+.main-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom: 30px; }
+.main-head p{ color: var(--text-dim); font-size:14px; margin-top:6px; }
+
+.panel{ background: var(--bg-panel); border:1px solid var(--line); border-radius: var(--radius); padding: 26px; margin-bottom: 24px; }
+.panel h3{ font-size:16px; margin-bottom:18px; }
+
+table{ width:100%; border-collapse: collapse; }
+th, td{ text-align:left; padding: 12px 10px; border-bottom:1px solid var(--line); font-size:13.5px; }
+th{ color: var(--text-faint); font-family: var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; }
+td.actions{ display:flex; gap:8px; }
+
+.empty-state{ text-align:center; padding: 40px 20px; color: var(--text-dim); font-size:14px; }
+
+.view{ display:none; }
+.view.active{ display:block; }
+
+@media (max-width: 800px){
+  .dash{ flex-direction:column; }
+  .sidebar{ width:100%; flex-direction:row; align-items:center; padding: 16px 20px; }
+  .sidebar nav{ display:flex; gap:6px; }
+  .sidebar .logo{ margin-bottom:0; }
+  .main{ padding: 28px 20px; }
+}
