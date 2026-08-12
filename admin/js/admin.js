@@ -234,6 +234,37 @@ function escapeHtml(str){
   return div.innerHTML;
 }
 
+/* ============================================================
+   SETTINGS (support email)
+   ============================================================ */
+const settingsForm = document.getElementById('settings-form');
+const supportEmailInput = document.getElementById('support-email-input');
+const settingsStatus = document.getElementById('settings-status');
+
+async function loadSettings(){
+  const { data, error } = await supabaseClient.from('settings').select('support_email').eq('id', 1).single();
+  if(!error && data){
+    supportEmailInput.value = data.support_email || '';
+  }
+}
+
+settingsForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  settingsStatus.textContent = 'Saving...';
+  const { error } = await supabaseClient
+    .from('settings')
+    .update({ support_email: supportEmailInput.value })
+    .eq('id', 1);
+  if(error){
+    settingsStatus.textContent = 'Could not save — try again.';
+    settingsStatus.style.color = 'var(--danger)';
+  } else {
+    settingsStatus.textContent = 'Saved — the site will show this on next load.';
+    settingsStatus.style.color = 'var(--ok)';
+  }
+});
+
 loadServicesTable();
 loadWorksTable();
 loadMessages();
+loadSettings();
