@@ -6,7 +6,7 @@
    it only allows what your database rules (RLS policies) allow.
    ============================================================ */
 const SUPABASE_URL = "https://wtepopndelziujfxpxai.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_lMG6kSivvAk3g7Qa3Cv0Ow_NhCLL...";
+const SUPABASE_ANON_KEY = "sb_publishable_lMG6kSivvAk3g7Qa3Cv0Ow_NhCLL6bg";
 
 // Creates the shared client used by content.js on the public site
 // and by admin.js in the admin panel.
