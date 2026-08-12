@@ -129,6 +129,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-config.js"></script>
+<script src="js/settings.js"></script>
 <script src="js/main.js"></script>
 <script>
   const form = document.getElementById('contact-form');
@@ -139,6 +140,7 @@
     const payload = {
       name: form.name.value,
       email: form.email.value,
+      phone: document.getElementById('phone-code').value + ' ' + document.getElementById('phone').value.trim(),
       service: form.service.value,
       message: form.message.value,
     };
@@ -149,7 +151,8 @@
       status.style.color = 'var(--ok)';
       form.reset();
     } catch(err){
-      status.textContent = "Couldn't send right now — email hello@vixtonlabs.tech directly.";
+      const email = document.querySelector('.support-email')?.textContent || 'hello@vixtonlabs.tech';
+      status.textContent = `Couldn't send right now — email ${email} directly.`;
       status.style.color = 'var(--danger)';
     }
   });
