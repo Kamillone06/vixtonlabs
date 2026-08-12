@@ -212,6 +212,7 @@ async function loadMessages(){
     tr.innerHTML = `
       <td>${escapeHtml(m.name)}</td>
       <td>${escapeHtml(m.email)}</td>
+      <td>${escapeHtml(m.phone || '')}</td>
       <td>${escapeHtml(m.service || '')}</td>
       <td style="max-width:260px;">${escapeHtml(m.message)}</td>
       <td>${date}</td>
