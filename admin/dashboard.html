@@ -104,7 +104,28 @@
          <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Needs</th><th>Message</th><th>Received</th><th></th></tr></thead>
           <tbody></tbody>
         </table>
-        <div class="empty-state" id="messages-empty" style="display:none;">No messages yet.</div>
+<div class="empty-state" id="messages-empty" style="display:none;">No messages yet.</div>
+      </div>
+    </section>
+
+    <!-- ===== SETTINGS ===== -->
+    <section class="view" id="view-settings">
+      <div class="main-head">
+        <div>
+          <h1>Settings</h1>
+          <p>This email shows on the Contact page and in your site's footer.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Support email</h3>
+        <form id="settings-form">
+          <div class="field">
+            <label>Email shown to visitors</label>
+            <input type="email" id="support-email-input" required placeholder="hello@vixtonlabs.tech">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:auto;">Save changes</button>
+          <p id="settings-status" style="margin-top:14px; font-size:13px; color:var(--text-dim);"></p>
+        </form>
       </div>
     </section>
 
